@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Directory.styles.scss';
 import MenuItem from '../MenuItem/MenuItem.component';
-import { string } from 'prop-types';
 
 export interface DirectorySection {
     title: string;
@@ -57,10 +56,24 @@ export const Directory = () => {
     return (
         <div className="directory-menu">
             {
-                data.sections.map(({title, imageUrl, id, linkUrl, size} : DirectorySection)  => (
-                    <MenuItem key={id} title={title} subtitle="BUY NOW" imageUrl={imageUrl} size={size} />
-                ))
-            }
+              // cool trick - instead of doing each property individually,
+              // where they are the same, we can basically collect them under
+              // a name that will have properties for each ("otherSectionProps"
+              // will basically equal title, imageUrl, size and linkUrl - it will also 
+              // magically, NOT have "id". This is because we have that used in
+              // an explicit property, but it's called "key", which is why we need
+              // to handle that one separately...
+
+              // so, instead of this:
+              // data.sections.map(({title, imageUrl, id, linkUrl, size} : DirectorySection)  => (
+              //     <MenuItem key={id} title={title} subtitle="BUY NOW" imageUrl={imageUrl} size={size} />
+              // ))
+
+              // we can do this:
+              data.sections.map(({id, ...otherSectionProps} : DirectorySection)  => (
+                <MenuItem key={id} {...otherSectionProps} />
+              ))
+          }
         </div>
     );
 }
