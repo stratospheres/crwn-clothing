@@ -14,7 +14,7 @@ export interface MenuItemProps extends RouteComponentProps{
     linkUrl: string;
 }
 
-export const MenuItem: React.FunctionComponent<MenuItemProps> = 
+export const MenuItem = 
     // access to the history and match props is from the RouteComponentProps inheritance
     ({ title, imageUrl, size, linkUrl, history, match }: MenuItemProps) => (
     <div className={`${size} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
@@ -28,7 +28,7 @@ export const MenuItem: React.FunctionComponent<MenuItemProps> =
     </div>
 );
 
-// getting an error on the type here?
+// getting an error on the type here? 
 // see
 // https://www.dev-eth0.de/2019/09/10/using-withrouter-in-a-typescript-react-component/
 export default withRouter(MenuItem); 
