@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import SHOP_DATA, { ShopDataSection } from './ShopPage.data';
-import CollectionPreview from '../../Components/CollectionPreview/CollectionPreview.component';
+import { CollectionPreview } from '../../Components/CollectionPreview/CollectionPreview.component';
 
 export const ShopPage = () => {
   const [collections, setCollections] = useState(SHOP_DATA);
@@ -17,4 +17,5 @@ export const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+// See https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad
+// export default ShopPage;

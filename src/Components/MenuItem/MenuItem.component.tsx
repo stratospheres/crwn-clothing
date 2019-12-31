@@ -14,7 +14,7 @@ export interface MenuItemProps extends RouteComponentProps{
     linkUrl: string;
 }
 
-export const MenuItem = 
+export const MenuItemInternal = 
     // access to the history and match props is from the RouteComponentProps inheritance
     ({ title, imageUrl, size, linkUrl, history, match }: MenuItemProps) => (
     <div className={`${size} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
@@ -29,6 +29,9 @@ export const MenuItem =
 );
 
 // getting an error on the type here? 
-// see
-// https://www.dev-eth0.de/2019/09/10/using-withrouter-in-a-typescript-react-component/
-export default withRouter(MenuItem); 
+// see https://www.dev-eth0.de/2019/09/10/using-withrouter-in-a-typescript-react-component/
+
+// Wondering why we alias this out? We don't use "default" exports, but need to 
+// wrap this export in the "withRouter" call. See https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad
+export const MenuItem = withRouter(MenuItemInternal); 
+

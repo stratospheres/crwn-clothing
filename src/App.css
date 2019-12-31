@@ -2,3 +2,9 @@ body {
   font-family: 'Open Sans Condensed';
   padding: 20px 60px;
 }
+
+/* get rid of ugly link underlines */
+a {
+  text-decoration : none;
+  color: black;
+}

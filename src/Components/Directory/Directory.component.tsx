@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Directory.styles.scss';
-import MenuItem from '../MenuItem/MenuItem.component';
+import { MenuItem } from '../MenuItem/MenuItem.component';
 
 export interface DirectorySection {
     title: string;
@@ -77,5 +77,5 @@ export const Directory = () => {
         </div>
     );
 }
-
-export default Directory;
+// see https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad
+// export default Directory;
